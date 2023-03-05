@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProgramTimer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">testpipeline</a> &gt; <a href="index.source.html" class="el_package">com.testpipeline</a> &gt; <span class="el_source">ProgramTimer.java</span></div><h1>ProgramTimer.java</h1><pre class="source lang-java linenums">package com.testpipeline;
+
+import java.time.Duration;
+
+<span class="nc" id="L5">class ProgramTimer</span>
+{
+	static long startTime;
+	static long endTime;
+	static long totalTime;
+
+	static Duration duration;
+
+	public static void start()
+	{
+<span class="fc" id="L15">		startTime = System.nanoTime();</span>
+<span class="fc" id="L16">	}</span>
+
+	public static void end()
+	{
+		// When end is called, it should print
+		// the calculation of the time spent
+<span class="fc" id="L22">		endTime = System.nanoTime();</span>
+<span class="fc" id="L23">		calcTime();</span>
+<span class="fc" id="L24">	}</span>
+
+	private static void calcTime()
+	{
+		// Print the result
+<span class="fc" id="L29">		totalTime = endTime - startTime;</span>
+<span class="fc" id="L30">		duration = Duration.ofNanos(System.nanoTime() - startTime);</span>
+<span class="fc" id="L31">		System.out.println(&quot;Program execution time: &quot; + </span>
+<span class="fc" id="L32">			duration.getNano() + &quot; nanoseconds.&quot;);</span>
+					
+		//System.out.println(&quot;Program execution time: &quot; +
+		//					totalTime + &quot; nanoseconds.&quot;);
+<span class="fc" id="L36">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

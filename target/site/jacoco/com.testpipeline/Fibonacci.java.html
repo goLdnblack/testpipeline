@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Fibonacci.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">testpipeline</a> &gt; <a href="index.source.html" class="el_package">com.testpipeline</a> &gt; <span class="el_source">Fibonacci.java</span></div><h1>Fibonacci.java</h1><pre class="source lang-java linenums">/*
+ In current or new class design multiple fib numbers
+ to display the run time for each sequence for both
+ recursive and iterative solutions.
+
+ Jesus Sanchez-Rivera
+ CEN3024
+ Professor Walauskis
+ 10/03/2022
+*/
+
+
+package com.testpipeline;
+
+import java.util.Arrays;
+
+public class Fibonacci
+{
+	private Fibonacci() {}
+
+	// Testing purposes 2/28/2023
+<span class="fc" id="L22">	static long startTime = 0;</span>
+<span class="fc" id="L23">	static long endTime = 0;</span>
+<span class="fc" id="L24">	static long totalTime = 0;</span>
+
+	public static long iterativeMethod(int n)
+	{
+<span class="fc" id="L28">		long fibResult = 0;</span>
+		//int x;
+		// Iterative
+
+<span class="fc" id="L32">		System.out.println(&quot;Iterative Method\n&quot;);</span>
+<span class="fc" id="L33">		ProgramTimer.start();</span>
+<span class="fc" id="L34">		fibResult = FibonacciIterative.fib(n);</span>
+
+		/* 
+		for (x = 0; x &lt;= n; x++)
+		{
+			System.out.println(&quot;Solving for fib(&quot; + x + &quot;)&quot;);
+			System.out.print(&quot;F(&quot; + x + &quot;) = &quot;);
+			ProgramTimer.start();
+			fibResult = FibonacciIterative.fib(x);
+			System.out.print(fibResult + &quot; &quot;);
+			ProgramTimer.end();
+			System.out.println();
+
+		}
+
+		*/
+
+<span class="fc" id="L51">		ProgramTimer.end();</span>
+<span class="fc" id="L52">		totalTime = ProgramTimer.duration.getNano();</span>
+
+<span class="fc" id="L54">		return fibResult;</span>
+	}
+
+	public static long recursiveMethod(int n)
+	{
+		//int x;
+<span class="fc" id="L60">		long fibResult = 0;</span>
+
+		// Recursive
+<span class="fc" id="L63">		System.out.println(&quot;\nRecursive Method\n&quot;);</span>
+
+<span class="fc" id="L65">		ProgramTimer.start();</span>
+<span class="fc" id="L66">		fibResult = FibonacciRecursive.fib(n);</span>
+		/* 
+		for (x = 0; x &lt;= n; x++)
+		{
+			System.out.println(&quot;Solving for fib(&quot; + x + &quot;)&quot;);
+			System.out.print(&quot;F(&quot; + x + &quot;) = &quot;);
+			ProgramTimer.start();
+			fibResult = FibonacciRecursive.fib(x);
+			System.out.print(fibResult + &quot; &quot;);
+			ProgramTimer.end();
+			System.out.println();
+
+		}
+		*/
+
+<span class="fc" id="L81">		ProgramTimer.end();</span>
+<span class="fc" id="L82">		totalTime = ProgramTimer.duration.getNano();</span>
+		
+<span class="fc" id="L84">		return fibResult;</span>
+	}
+
+
+	public static void iterativeVsRecursive(int n)
+	{
+		// Calculate the Fibonacci sequence up to
+		// the value n and display the time it took
+		// for each method.
+<span class="nc" id="L93">		long fibResult = 0;</span>
+		int x;
+		// Iterative
+<span class="nc" id="L96">		System.out.println(&quot;Iterative Method\n&quot;);</span>
+
+<span class="nc bnc" id="L98" title="All 2 branches missed.">		for (x = 0; x &lt;= n; x++)</span>
+		{
+<span class="nc" id="L100">			System.out.println(&quot;Solving for fib(&quot; + x + &quot;)&quot;);</span>
+<span class="nc" id="L101">			System.out.print(&quot;F(&quot; + x + &quot;) = &quot;);</span>
+<span class="nc" id="L102">			ProgramTimer.start();</span>
+<span class="nc" id="L103">			fibResult = FibonacciIterative.fib(x);</span>
+<span class="nc" id="L104">			System.out.print(fibResult + &quot; &quot;);</span>
+<span class="nc" id="L105">			ProgramTimer.end();</span>
+<span class="nc" id="L106">			System.out.println();</span>
+
+		}
+
+		// Recursive
+<span class="nc" id="L111">		System.out.println(&quot;\nRecursive Method\n&quot;);</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">		for (x = 0; x &lt;= n; x++)</span>
+		{
+<span class="nc" id="L114">			System.out.println(&quot;Solving for fib(&quot; + x + &quot;)&quot;);</span>
+<span class="nc" id="L115">			System.out.print(&quot;F(&quot; + x + &quot;) = &quot;);</span>
+<span class="nc" id="L116">			ProgramTimer.start();</span>
+<span class="nc" id="L117">			startTime = System.nanoTime();</span>
+<span class="nc" id="L118">			fibResult = FibonacciRecursive.fib(x);</span>
+<span class="nc" id="L119">			System.out.print(fibResult + &quot; &quot;);</span>
+<span class="nc" id="L120">			ProgramTimer.end();</span>
+<span class="nc" id="L121">			System.out.println();</span>
+
+		}
+<span class="nc" id="L124">	}</span>
+
+	public static long recursiveMemoization(int n)
+	{
+		// Compare the time difference of recursion
+		// using memoization versus regular recursion.
+<span class="fc" id="L130">		long fibResult = 0;</span>
+		//int x;
+
+		// Recursive Memoization method
+<span class="fc" id="L134">		System.out.println(&quot;Recursive Memoization Method\n&quot;);</span>
+
+<span class="fc" id="L136">		ProgramTimer.start();</span>
+<span class="fc" id="L137">		long[] memo = new long[n + 2];</span>
+<span class="fc" id="L138">		Arrays.fill(memo, -1);</span>
+<span class="fc" id="L139">		fibResult = FibonacciDP.fib(n, memo);</span>
+		/* 
+
+		for (x = 0; x &lt;= n; x++)
+		{
+			long[] memo = new long[n + 2];
+			Arrays.fill(memo, -1);
+			System.out.println(&quot;Solving for fib(&quot; + x + &quot;)&quot;);
+			System.out.print(&quot;F(&quot; + x + &quot;) = &quot;);
+			
+			fibResult = FibonacciDP.fib(x, memo);
+			System.out.println(&quot;value: &quot; + FibonacciDP.fib(x, memo));
+			System.out.print(fibResult + &quot; &quot;);
+			
+			System.out.println();
+
+		}
+		*/
+
+<span class="fc" id="L158">		ProgramTimer.end();</span>
+<span class="fc" id="L159">		totalTime = ProgramTimer.duration.getNano();</span>
+
+<span class="fc" id="L161">		return fibResult;</span>
+	}
+
+	public static void main(String[] args)
+	{
+		// Test for fib(40)
+		//iterativeVsRecursive(40);
+
+		// Test using memoization
+		//recursiveMemoization(40);
+
+		//iterativeMethod(30);
+
+<span class="nc" id="L174">		System.out.println(iterativeMethod(40));</span>
+<span class="nc" id="L175">		System.out.println(recursiveMethod(40) + &quot;\n&quot;);</span>
+<span class="nc" id="L176">		System.out.println(recursiveMemoization(40));</span>
+<span class="nc" id="L177">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
